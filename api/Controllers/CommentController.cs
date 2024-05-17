@@ -74,7 +74,7 @@ namespace api.Controllers
                 {
                     return BadRequest("This stock does not exist.");
                 }
-                else 
+                else
                 {
                     await _stockRepo.CreateAsync(stock);
                 }

@@ -30,8 +30,8 @@ namespace api.Repository
         public async Task<Comment?> DeleteAsync(int id)
         {
             var commentModel = await _context.Comments.FirstOrDefaultAsync(x => x.Id == id);
-            
-            if(commentModel == null)
+
+            if (commentModel == null)
             {
                 return null;
             }
@@ -45,12 +45,12 @@ namespace api.Repository
         {
             var comments = _context.Comments.Include(a => a.AppUser).AsQueryable();
 
-            if(!string.IsNullOrWhiteSpace(queryObject.Symbol)) 
+            if (!string.IsNullOrWhiteSpace(queryObject.Symbol))
             {
-                comments = comments.Where(s => s.Stock.Symbol == queryObject.Symbol );
+                comments = comments.Where(s => s.Stock.Symbol == queryObject.Symbol);
             };
 
-            if(queryObject.IsDecsending == true) 
+            if (queryObject.IsDecsending == true)
             {
                 comments = comments.OrderByDescending(c => c.CreatedOn);
             };
@@ -67,7 +67,7 @@ namespace api.Repository
         {
             var existingModel = await _context.Comments.FirstOrDefaultAsync(s => s.Id == id);
 
-            if(existingModel == null)
+            if (existingModel == null)
             {
                 return null;
             }

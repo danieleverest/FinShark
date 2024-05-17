@@ -21,7 +21,7 @@ namespace api.Service
         }
         public async Task<Stock> FindStockBySymbolAsync(string symbol)
         {
-            try 
+            try
             {
                 var result = await _httpClient.GetAsync($"https://financialmodelingprep.com/api/v3/profile/{symbol}?apikey={_config["FMPKey"]}");
                 if (result.IsSuccessStatusCode)
@@ -36,7 +36,8 @@ namespace api.Service
                     return null;
                 }
                 return null;
-            } catch (Exception e) 
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e);
                 return null;

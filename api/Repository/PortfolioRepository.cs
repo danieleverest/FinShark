@@ -27,11 +27,11 @@ namespace api.Repository
         public async Task<Portfolio> DeletePortfoilo(AppUser user, string symbol)
         {
             var portfolioModel = await _context.portfolios.FirstOrDefaultAsync(x => x.AppUserId == user.Id && x.Stock.Symbol.ToLower() == symbol.ToLower());
-            if(portfolioModel == null) return null;
+            if (portfolioModel == null) return null;
 
             _context.portfolios.Remove(portfolioModel);
             await _context.SaveChangesAsync();
-            
+
             return portfolioModel;
         }
 
